@@ -1,5 +1,8 @@
 # Agenticracy™ Public Standard
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19892015.svg)](https://doi.org/10.5281/zenodo.19892015)
+
+
 **A public baseline schema and metacognitive evaluation protocol for reality-grounded AI outputs.**
 
 Agenticracy™ provides a reproducible public standard for evaluating narrative-substrate congruence in organisations, claims, systems, and human-AI workflows. It is designed to test whether structured metacognitive prompting reduces sycophancy, halo effects, and narrative over-accommodation in large language model outputs.

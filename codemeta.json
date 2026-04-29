@@ -3,7 +3,7 @@
   "@type": "SoftwareSourceCode",
   "name": "Agenticracy Public Standard",
   "version": "4.9.6",
-  "identifier": "10.5281/zenodo.TBD",
+  "identifier": "10.5281/zenodo.19892015",
   "codeRepository": "https://github.com/agenticracy/standard",
   "license": "LicenseRef-Agenticracy-Public-Standard",
   "programmingLanguage": [
