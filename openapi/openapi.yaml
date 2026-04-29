@@ -1,0 +1,285 @@
+openapi: 3.1.0
+info:
+  title: Agenticracy Public Baseline API
+  description: |
+    Draft specification for the Agenticracy™ public baseline scoring API.
+    
+    **Status: DRAFT — NOT YET OPERATIONAL**
+    
+    This API is documented for transparency and pre-registration purposes.
+    It does not yet accept payloads or return computed scores.
+    When implemented, it will compute public baseline scores (G_public, D_public, R_public)
+    from submitted S, P, O, N values using the disclosed linear formula.
+    
+    The private high-resolution GIVER implementation is NOT exposed via this API.
+    
+    ## Public baseline formula
+    
+    ```
+    R_public = (P + O) / 2
+    D_public = max(0, S - R_public)
+    G_public = clamp(1.0, 10.0, R_public - 0.5 * D_public - 0.25 * max(0, N - 5.0))
+    ```
+    
+    ## Licensing
+    
+    The API specification is CC BY-NC-ND 4.0.
+    Commercial implementation requires a licence from psylligent ltd.
+  version: 0.1.0-draft
+  contact:
+    name: Vladut-Mihai Iorga
+    email: vlad@psylligent.com
+    url: https://agenticracy.ai
+  license:
+    name: CC-BY-NC-ND-4.0
+    url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+servers:
+  - url: https://api.agenticracy.ai/v1
+    description: Production server (not yet live)
+
+paths:
+  /audit:
+    post:
+      summary: Compute public baseline scores from construct values
+      description: |
+        Submit S, P, O, N values and receive public baseline scores.
+        
+        **DRAFT: This endpoint is not yet operational.**
+      operationId: computePublicBaseline
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuditRequest'
+      responses:
+        '200':
+          description: Successful computation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuditResponse'
+        '400':
+          description: Invalid input
+        '503':
+          description: Service not yet implemented
+      tags:
+        - audit
+
+  /audit/batch:
+    post:
+      summary: Compute public baseline scores for multiple entities
+      description: |
+        Submit multiple audit records in a single request.
+        
+        **DRAFT: This endpoint is not yet operational.**
+      operationId: computeBatchPublicBaseline
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchAuditRequest'
+      responses:
+        '200':
+          description: Successful batch computation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchAuditResponse'
+        '400':
+          description: Invalid input
+        '503':
+          description: Service not yet implemented
+      tags:
+        - audit
+
+  /health:
+    get:
+      summary: Health check
+      description: Returns API operational status
+      operationId: healthCheck
+      responses:
+        '200':
+          description: Service healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [operational, draft, maintenance]
+                  version:
+                    type: string
+                  public_baseline_version:
+                    type: string
+        '503':
+          description: Service unavailable
+      tags:
+        - system
+
+components:
+  schemas:
+    AuditRequest:
+      type: object
+      required:
+        - entity_name
+        - audit_year
+        - S
+        - P
+        - O
+        - N
+      properties:
+        entity_name:
+          type: string
+          description: Name of the entity being audited
+          example: "Example Corp"
+        audit_year:
+          type: integer
+          description: Year of the audit window
+          example: 2024
+        S:
+          type: number
+          format: float
+          minimum: 1.0
+          maximum: 10.0
+          description: Narrative signal score
+          example: 8.5
+        P:
+          type: number
+          format: float
+          minimum: 1.0
+          maximum: 10.0
+          description: Physical substrate score
+          example: 7.2
+        O:
+          type: number
+          format: float
+          minimum: 1.0
+          maximum: 10.0
+          description: Observer validation score
+          example: 6.8
+        N:
+          type: number
+          format: float
+          minimum: 1.0
+          maximum: 10.0
+          description: Noise/salinity score
+          example: 3.5
+        confidence_S:
+          type: string
+          enum: [low, medium, high]
+          description: Confidence in S score
+        confidence_P:
+          type: string
+          enum: [low, medium, high]
+          description: Confidence in P score
+        confidence_O:
+          type: string
+          enum: [low, medium, high]
+          description: Confidence in O score
+        confidence_N:
+          type: string
+          enum: [low, medium, high]
+          description: Confidence in N score
+
+    AuditResponse:
+      type: object
+      properties:
+        entity_name:
+          type: string
+        audit_year:
+          type: integer
+        inputs:
+          type: object
+          properties:
+            S:
+              type: number
+            P:
+              type: number
+            O:
+              type: number
+            N:
+              type: number
+        outputs:
+          type: object
+          properties:
+            R_public:
+              type: number
+              format: float
+              description: Public Ground Reality Estimate
+            D_public:
+              type: number
+              format: float
+              description: Public Narrative Debt
+            G_public:
+              type: number
+              format: float
+              minimum: 1.0
+              maximum: 10.0
+              description: Public baseline congruence score
+            state_class:
+              type: string
+              enum:
+                - extractive_extreme
+                - congruent_center
+                - pathological_humility
+                - noise_dominant
+                - ambiguous_mixed
+              description: Classification based on S/P/O/N pattern
+            action_class:
+              type: string
+              enum:
+                - reduce_S
+                - increase_P
+                - increase_S
+                - reduce_N
+                - maintain
+                - hold_observe
+                - mixed
+              description: Recommended intervention class
+        formula_version:
+          type: string
+          description: Version of the public baseline formula used
+          example: "v4.9.6-public-baseline"
+        computed_at:
+          type: string
+          format: date-time
+        disclaimer:
+          type: string
+          description: Standard disclaimer about decision-support nature
+          example: "Scores are decision-support estimates, not factual declarations. Do not use for legal, clinical, or hiring decisions without human review."
+
+    BatchAuditRequest:
+      type: object
+      properties:
+        audits:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditRequest'
+          maxItems: 100
+
+    BatchAuditResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditResponse'
+        summary:
+          type: object
+          properties:
+            total_submitted:
+              type: integer
+            total_computed:
+              type: integer
+            errors:
+              type: integer
+
+tags:
+  - name: audit
+    description: Audit computation operations
+  - name: system
+    description: System health and metadata
