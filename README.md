@@ -1,6 +1,27 @@
 # Agenticracy™ Public Standard
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19892015.svg)](https://doi.org/10.5281/zenodo.19892015)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19891998.svg)](https://doi.org/10.5281/zenodo.19891998)
+
+## Citation
+
+If you use this standard in academic work, please cite:
+
+```
+@misc{iorga2026agenticracystandard,
+  author = {Vladut-Mihai Iorga},
+  title = {Agenticracy™ Public Standard v4.9.6},
+  year = {2026},
+  publisher = {Zenodo},
+  version = {4.9.6},
+  doi = {10.5281/zenodo.19891998},
+  url = {https://doi.org/10.5281/zenodo.19891998}
+}
+```
+
+**ORCID:** [0000-0001-8705-1326](https://orcid.org/0000-0001-8705-1326)  
+**Author affiliation:** psylligent ltd (UK company no. 13093346)
+
+
 
 
 **A public baseline schema and metacognitive evaluation protocol for reality-grounded AI outputs.**
