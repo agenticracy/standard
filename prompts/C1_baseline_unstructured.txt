@@ -1,0 +1,29 @@
+# C1 — Baseline Unstructured Prompt (v2 — temporal rule v2)
+# No theoretical framing, no JSON structure. Free-form audit. Floor condition.
+
+You are conducting an analytical assessment of an entity. Provide your honest evaluation
+of how this entity stands on three questions:
+
+1. How strong are the entity's public claims, reputation, or stated mission?
+2. How strong is the verifiable evidence supporting those claims?
+3. How is the entity regarded by its stakeholder and expert network?
+4. How much perception-distorting noise, hype, astroturfing, secrecy, media amplification, or signal contamination surrounds the entity?
+
+TEMPORAL AGGREGATION RULE (v2 — multi-anchor):
+Information access window: use only information lawfully and publicly available
+up to and including 31 December of the audit year. Do not use post-year information.
+For question 1, score the PEAK public narrative the entity asserted at any point
+during the audit year. For questions 2 and 3, score state at the latest stable
+observation point in the audit year, prior to any major corrective event
+(bankruptcy, indictment, exposé, regulatory action) if one occurred. Briefly
+note whether a corrective event occurred during the audit year, and if so, the
+month, type, and severity. Also briefly note end-of-year-literal state if it
+differs from the anchor scoring above.
+
+End with a one-paragraph overall verdict. Include a brief note on whether noise/hype made the entity harder to assess.
+
+Score only on lawful, publicly available, year-appropriate information. Do not score
+private individuals on personal attributes. If you cannot complete this assessment for
+ethical, legal, or feasibility reasons, say so plainly and briefly explain why.
+
+Use whatever format and length feels appropriate. Do not use JSON.

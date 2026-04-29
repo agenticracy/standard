@@ -1,0 +1,43 @@
+{
+  "entity_name": "Example Entity",
+  "audit_year": 2026,
+  "framework": "Agenticracy Metric v4.9.6-public-baseline",
+  "scorer_identity": "AI",
+  "calibration_class": "C3",
+  "scores": {
+    "S": 8.0,
+    "S_confidence": "medium",
+    "S_justification": "Public claims are prominent and ambitious.",
+    "P": 6.0,
+    "P_confidence": "medium",
+    "P_justification": "Some operational evidence is visible, but not complete.",
+    "O": 6.5,
+    "O_confidence": "medium",
+    "O_justification": "Independent observer validation is mixed but generally positive.",
+    "N": 5.5,
+    "N_confidence": "medium",
+    "N_justification": "Moderate slop/noise makes substrate assessment harder."
+  },
+  "public_baseline": {
+    "R_public": 6.25,
+    "D_public": 1.75,
+    "G_public": 5.25,
+    "engine_type": "public_baseline",
+    "private_scores_withheld": true
+  },
+  "classification": {
+    "state_class": "ambiguous_mixed",
+    "recommended_action_class": "mixed"
+  },
+  "cost_quality": {
+    "input_tokens": 1000,
+    "output_tokens": 750,
+    "reasoning_tokens": 250,
+    "reasoning_chars": 1800,
+    "latency_seconds": 12.5,
+    "cost_usd": null,
+    "schema_valid": true
+  },
+  "notes_on_uncertainty": "Example record only; not an empirical audit.",
+  "verdict": "Example demonstrates the public schema without disclosing any proprietary scoring layer."
+}

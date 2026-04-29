@@ -1,52 +1,81 @@
 # Agenticracy™ Public Standard
 
-Agenticracy™ is a public standard for describing epistemic congruence in AI-generated outputs and human-AI workflows.
+**A public baseline schema and metacognitive evaluation protocol for reality-grounded AI outputs.**
 
-The public standard defines a reproducible, interoperability-focused layer for reporting:
+Agenticracy™ provides a reproducible public standard for evaluating narrative-substrate congruence in organisations, claims, systems, and human-AI workflows. It is designed to test whether structured metacognitive prompting reduces sycophancy, halo effects, and narrative over-accommodation in large language model outputs.
 
-- `S` - Narrative signal
-- `P` - Physical / evidential substrate
-- `O` - Observer validation
-- `N` - Noise / slop
-- `G_public` - reproducible public baseline congruence score
-- public state classes
-- public action classes
-- cost-quality telemetry
+> Public standard: open for research, replication, and voluntary adoption.  
+> Proprietary layer: AgenticracyXQ™ and high-resolution private scoring remain reserved for authorised commercial use via Workability.ai / psylligent ltd.
 
-This repository is the **software-facing public standard package**. It is intended for voluntary adoption, research replication, schema validation, public audit records, and future discovery through CodeMeta, Software Heritage, Zenodo, OpenAIRE, and related scholarly infrastructure.
+## Key empirical result
 
-## Public / private boundary
+Paper 1 evaluated **132 entities × 10 model providers × 3 prompt conditions = 3,960 cells**. The public Agenticracy schema produced strong archetype separation in the merged calibration dataset:
+
+| Group | Intended archetype | Hit rate |
+|---|---|---:|
+| A | Extractive / collapsed systems | 96.1% |
+| B | Regenerative / substrate-anchored systems | 84.3% |
+| C | Ambiguous / contested systems | Panel disagreement expected |
+| D | Pathological humility / halo-disguised dysfunction | 77.7% |
+
+The dataset includes cost-quality telemetry, structured outputs, public derived scores, and model reasoning where providers exposed it.
+
+## Public constructs
+
+| Symbol | Construct | Meaning |
+|---|---|---|
+| `S` | Narrative signal | Strength, prominence, ambition, or public projection |
+| `P` | Physical substrate | Verifiable operational, financial, institutional, or technical evidence |
+| `O` | Observer validation | Independent stakeholder, expert, peer, regulatory, or community regard |
+| `N` | Noise / slop | Perception-distorting hype, secrecy, astroturfing, contradiction, or low signal-to-noise |
+
+## Public baseline formula
+
+```text
+R_public = (P + O) / 2
+D_public = max(0, S - R_public)
+G_public = clamp(1.0, 10.0, R_public - 0.5 * D_public - 0.25 * max(0, N - 5.0))
+```
+
+This public baseline exists for reproducibility. It is **not** the proprietary AgenticracyXQ™ engine.
+
+## Repository structure
+
+```text
+schema/      Public JSON Schema and human-readable field definitions
+prompts/     C1/C2/C3 public experimental prompts
+engine/      Public baseline engine and formula notes
+examples/    Public example audit record
+paper/       Paper 1 preprint manuscript
+```
+
+## Public vs reserved
 
 Public and reproducible:
 
-- JSON Schema
+- construct definitions (`S/P/O/N`)
+- public schema
 - public baseline formula
-- public construct definitions
-- prompt/interface conventions
-- public state and action classes
-- cost-quality telemetry fields
-- citation and CodeMeta metadata
+- state/action classes
+- prompts C1/C2/C3
+- public example records
+- public telemetry conventions
 
-Reserved and not disclosed:
+Reserved / not disclosed:
 
-- AgenticracyXQ™
-- proprietary high-resolution scoring algorithms
-- private synthesis coefficients
-- corrective-pressure / trajectory computations
-- verdict thresholds
-- private sycophancy and halo marker dictionaries
-- paid metacognition skill implementations
-
-The open-source lite metacognition skill is published separately as [`agenticracy/agenticracy-skill`](https://github.com/agenticracy/agenticracy-skill). The paid/proprietary layer, currently reserved as **AgenticracyXQ™**, is intended for commercial use through Workability.ai or other authorised vehicles.
+- AgenticracyXQ™ high-resolution scoring
+- private synthesis constants
+- private corrective-pressure computations
+- private trajectory / ETA computations
+- proprietary quality-marker dictionaries
+- commercial audit, certification, or managed implementation services
 
 ## Citation
 
-If you use this standard, cite:
+Use `CITATION.cff` or cite the forthcoming Zenodo DOI once issued.
 
-> Vladut-Mihai Iorga. *Agenticracy™ Metric public standard*. 2026. ORCID: https://orcid.org/0000-0001-8705-1326.
+## Contact
 
-See [`CITATION.cff`](./CITATION.cff) and [`codemeta.json`](./codemeta.json).
-
-## Licence
-
-See [`LICENSE`](./LICENSE). Public standard use is permitted for research, non-commercial interoperability, and voluntary adoption with attribution. Commercial use and certification are reserved.
+- LinkedIn: https://www.linkedin.com/in/psylligent/
+- GitHub: https://github.com/psylligent
+- OpenCollective: https://opencollective.com/agenticracy

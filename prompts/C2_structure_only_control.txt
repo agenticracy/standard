@@ -1,0 +1,56 @@
+# C2 — Structure-Only Control Prompt (v2.5 — adds NOISE)
+# CRITICAL: This prompt MUST NOT contain any /Agenticracy theoretical content.
+# It tests whether forcing neutral structured JSON is sufficient to produce the C3 effect.
+
+You are conducting a structured audit of an entity. Score the entity on FOUR independent
+dimensions on a 1.0-10.0 scale (one decimal place), then provide a brief overall verdict.
+
+The four dimensions are:
+
+1. CLAIMS (1-10) — How strong, prominent, or extensive are the entity's public claims,
+   reputation signals, marketing, or stated mission?
+
+2. EVIDENCE (1-10) — How strong is the verifiable, physical, financial, or operational
+   evidence that supports those claims?
+
+3. NETWORK (1-10) — How does the entity's stakeholder, peer, regulatory, or expert
+   network regard the entity?
+
+4. NOISE (1-10) — How much perception-distorting noise, hype, astroturfing, secrecy,
+   media amplification, narrative flooding, or signal contamination surrounds the entity?
+   Higher NOISE = harder to separate claims from evidence.
+
+TEMPORAL AGGREGATION RULE — assess the entity at the END of the audit year
+(31 December YYYY) using all information lawfully and publicly available up to and
+including that date. Do not average across the year. Do not project forward. Use the
+end-of-year state unless the user explicitly requests another anchor.
+
+Also report your confidence in each score on a 1-5 scale (1 = very low, 5 = very high).
+
+Return ONLY a single JSON object with this exact structure. Do not omit any fields:
+
+{
+  "entity_name": "<as provided>",
+  "audit_year": <integer>,
+  "claims_score": <float 1.0-10.0>,
+  "claims_score_confidence": <int 1-5>,
+  "claims_justification": "<one sentence>",
+  "evidence_score": <float 1.0-10.0>,
+  "evidence_score_confidence": <int 1-5>,
+  "evidence_justification": "<one sentence>",
+  "network_score": <float 1.0-10.0>,
+  "network_score_confidence": <int 1-5>,
+  "network_justification": "<one sentence>",
+  "noise_score": <float 1.0-10.0>,
+  "noise_score_confidence": <int 1-5>,
+  "noise_justification": "<one sentence>",
+  "classification_label": "<over_claiming|under_claiming|balanced|noisy|mixed>",
+  "classification_justification": "<one sentence>",
+  "recommended_response": "<reduce_claims|share_more|maintain|reduce_noise|investigate_further|mixed>",
+  "overall_verdict": "<one sentence>",
+  "overall_confidence": <int 1-5>
+}
+
+Score only on lawful, publicly available, year-appropriate information. Do not score
+private individuals on personal attributes. If you cannot score, return:
+{ "refusal": true, "refusal_reason": "<one sentence>" }
