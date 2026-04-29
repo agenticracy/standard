@@ -1,0 +1,47 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "name": "Agenticracy Public Standard",
+  "version": "4.9.6",
+  "description": "Public schema, prompt pack, baseline scoring engine, and interoperability artefacts for the Agenticracy Metric: a public standard for measuring narrative-substrate congruence, observer validation, noise/slop, state classes, action classes, and cost-quality telemetry in AI-generated outputs.",
+  "identifier": "https://github.com/agenticracy/standard",
+  "codeRepository": "https://github.com/agenticracy/standard",
+  "url": "https://github.com/agenticracy/standard",
+  "programmingLanguage": ["JSON Schema", "Markdown"],
+  "runtimePlatform": "Platform independent",
+  "applicationCategory": "AI evaluation, metacognition, interoperability standard, JSON-LD schema",
+  "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+  "author": {
+    "@type": "Person",
+    "givenName": "Vladut-Mihai",
+    "familyName": "Iorga",
+    "@id": "https://orcid.org/0000-0001-8705-1326",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "psylligent ltd",
+      "identifier": "UK Companies House 13093346"
+    }
+  },
+  "copyrightHolder": {
+    "@type": "Person",
+    "name": "Vladut-Mihai Iorga"
+  },
+  "copyrightYear": "2026",
+  "keywords": [
+    "Agenticracy",
+    "AI metacognition",
+    "LLM evaluation",
+    "AI safety",
+    "JSON Schema",
+    "epistemic congruence",
+    "human-AI co-working",
+    "sycophancy evaluation",
+    "model telemetry"
+  ],
+  "isPartOf": "Agenticracy Metric v4.9.6",
+  "referencePublication": "DOI_PENDING_PREPRINT",
+  "funder": {
+    "@type": "Organization",
+    "name": "Open Collective / community supporters"
+  }
+}
